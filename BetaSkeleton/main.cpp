@@ -5,13 +5,16 @@ int main(char argc, char ** argv)
 {
 	const float WIDTH = 100;
 	const float HEIGHT = 100;
+
+	const float STEP_X = 0.1f;
+	const float STEP_Y = 0.1f;
 	const int TOWN_COUNT = 3;
 	const float POINT_RADIUS = 1.f;
 	ColorRGB RED{ 255, 0, 0 };
 	ColorRGB BLUE{ 0, 0, 255 };
 
 	Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
-	map.CalcBetaSkeleton(8.f);
+	map.CalcBetaSkeleton(8.f, STEP_X, STEP_Y);
 
 	Svg svg("test.svg", WIDTH, HEIGHT);
 

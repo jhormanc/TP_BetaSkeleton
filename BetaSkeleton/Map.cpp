@@ -41,20 +41,23 @@ void Map::AddWayFromPointList(const std::vector<Vector2d> & pointList)
 
 bool Map::IsInBetaSkeleton(const Vector2d & p, const Vector2d & a, const Vector2d & b, float beta)
 {
-	return std::pow(Vector2d::Distance(a, b), beta) > (std::pow(Vector2d::Distance(a, p), beta) + std::pow(Vector2d::Distance(b, p), beta));
+	return std::abs(std::pow(Vector2d::Distance(a, p), beta) + std::pow(Vector2d::Distance(b, p), beta) - std::pow(Vector2d::Distance(a, b), beta)) < 2.f;
 }
 
 void Map::CalcBetaSkeleton(float beta)
 {
 	std::vector<Vector2d> pointInBetaSkeleton;
 	int size = towns.size();
+	const float step_x = 0.1f;
+
+	const float step_y = 0.1f;
 	for (int a = 0; a < size; ++a)
 	{
 		for (int b = 0; b < size; ++b)
 		{
-			for (int x = xMin; x < xMax; ++x)
+			for (float x = xMin; x < xMax; x += step_x)
 			{
-				for (int y = yMin; y < yMax; ++y)
+				for (float y = yMin; y < yMax; y += step_y)
 				{
 					Vector2d p = Vector2d(x, y);
 					if (p != towns[a] && p != towns[b] && IsInBetaSkeleton(p, towns[a], towns[b], beta))
