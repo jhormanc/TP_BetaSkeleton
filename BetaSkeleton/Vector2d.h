@@ -100,6 +100,9 @@ public:
 		return(x == v.x && y == v.y);
 	}
 
+	inline bool operator!=(const Vector2d& v) const {
+		return(x != v.x && y != v.y);
+	}
 	/*Check which Vectors are closer or further from the
 	origin.
 	bool operator>(const Vector2d&) const;
