@@ -1,3 +1,7 @@
-﻿  main.cpp
+﻿  Map.cpp
+c:\users\s\documents\github\tp_betaskeleton\betaskeleton\map.cpp(23): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\s\documents\github\tp_betaskeleton\betaskeleton\map.cpp(55): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+c:\users\s\documents\github\tp_betaskeleton\betaskeleton\map.cpp(57): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+c:\users\s\documents\github\tp_betaskeleton\betaskeleton\map.cpp(59): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
   BetaSkeleton.vcxproj -> C:\Users\S\Documents\GitHub\TP_BetaSkeleton\Debug\BetaSkeleton.exe
   BetaSkeleton.vcxproj -> C:\Users\S\Documents\GitHub\TP_BetaSkeleton\Debug\BetaSkeleton.pdb (Partial PDB)

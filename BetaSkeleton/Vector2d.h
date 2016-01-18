@@ -244,4 +244,9 @@ public:
 		y = std::max(y, v.y);
 		return *this;
 	}
+
+	inline static float Distance(Vector2d a, Vector2d b)
+	{
+		return (b - a).Length();
+	}
 };
