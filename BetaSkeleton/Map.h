@@ -14,6 +14,6 @@ public:
 	float xMax, yMax, xMin, yMin;
 	Map(std::vector<Vector2d>, float, float, float, float);
 	static Map GenRandomTowns(float, float, float, float, int);
-	void CalcBetaSkeleton(float);
+	void CalcBetaSkeleton(const float, const float, const float);
 };
 
