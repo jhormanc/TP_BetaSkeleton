@@ -1,6 +1,16 @@
 <?xml version="1.0" standalone="no" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="500px" height="500px" xmlns="http://www.w3.org/2000/svg" version="1.1" >
+<svg width="800px" height="800px" xmlns="http://www.w3.org/2000/svg" version="1.1" >
 	<circle cx="50" cy="50" r="5" fill="rgb(255,0,0)" />
 	<line x1="0" y1="0" x2="30" y2="100" stroke-width="2" stroke="rgb(0,255,0)" />
+	<circle cx="0" cy="800" r="100" fill="rgb(255,0,0)" />
+	<circle cx="0" cy="800" r="100" fill="rgb(255,0,0)" />
+	<circle cx="0" cy="800" r="100" fill="rgb(255,0,0)" />
+	<circle cx="0" cy="800" r="100" fill="rgb(255,0,0)" />
+	<circle cx="0" cy="800" r="100" fill="rgb(255,0,0)" />
+	<circle cx="0" cy="800" r="100" fill="rgb(255,0,0)" />
+	<circle cx="0" cy="800" r="100" fill="rgb(255,0,0)" />
+	<circle cx="0" cy="800" r="100" fill="rgb(255,0,0)" />
+	<circle cx="0" cy="800" r="100" fill="rgb(255,0,0)" />
+	<circle cx="0" cy="800" r="100" fill="rgb(255,0,0)" />
 </svg>

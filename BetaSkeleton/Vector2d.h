@@ -230,4 +230,18 @@ public:
 	inline Vector2d rotate90Clockwise() const {
 		return Vector2d(y, -x);
 	}
+
+	inline const Vector2d & Min(Vector2d v)
+	{
+		x = std::min(x, v.x);
+		y = std::min(y, v.y);
+		return *this;
+	}
+
+	inline const Vector2d & Max(Vector2d v)
+	{
+		x = std::max(x, v.x);
+		y = std::max(y, v.y);
+		return *this;
+	}
 };
