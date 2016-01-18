@@ -110,6 +110,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ColorRGB.h" />
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="Svg.h" />
+    <ClInclude Include="SvgHelper.h" />
+    <ClInclude Include="Vector2d.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Svg.cpp" />
+    <ClCompile Include="Vector2d.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
