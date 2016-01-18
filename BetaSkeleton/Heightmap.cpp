@@ -1,32 +1,38 @@
 #include "Heightmap.h"
 
 
-
 Heightmap::Heightmap(const char *filename)
 {
-	CImg<unsigned char> map_img(filename);
-	width = map_img.width();
-	height = map_img.height();
+	std::ifstream is (filename, std::ifstream::binary);
 
-	map = std::vector<std::vector<float>>();
+	if (is) {
+		std::string magicNum;
+		int maxColVal;
+		char * m_Ptr;
 
-	if (!map.isNull())
-	{
-		// On parcour chaque pixel de l'image pour récupérer le niveau de gris
-		for (int z = 0; z < height; ++z)
-		{
-			QVector<double> tmp = QVector<double>();
-			QRgb rowData = (QRgb)map.scanLine(z);
+		is >> magicNum;
+		is >> width >> height >> maxColVal;
+		is.get();
+		
+		size_t size = width * height * 3;
+		
+		m_Ptr = new char[size];
+		is.read(m_Ptr, size);
 
-			for (int x = 0; x < width; ++x)
-			{
-				QRgb pixelData = rowData[x];
-				double y = double(qGray(pixelData)) / 255;
+		std::vector<std::vector<float>> map = std::vector<std::vector<float>>();
 
-				tmp.push_back(y);
+		for (int x = 0; x < width * 3; x += 3) {
+			map.push_back(std::vector<float>());
+
+			for (int y = 0; y < height * 3; y += 3) {
+				int idx = y + x * width;
+				float gray_scale = ((float)m_Ptr[idx] + (float)m_Ptr[idx + 1] + (float)m_Ptr[idx + 2]) / 3; // Average method
+				map[x / 3].push_back(gray_scale);
 			}
-			_heightMap.push_back(tmp);
 		}
+		is.close();
+	} else {
+		std::cout << "Error: can't open file." << std::endl;
 	}
 }
 

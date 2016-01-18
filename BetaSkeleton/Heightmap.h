@@ -1,7 +1,10 @@
 #pragma once
 
 #include <vector>
-#include <CImg.h>
+#include <iostream>
+#include <fstream> 
+#include <string>
+
 
 class Heightmap
 {
