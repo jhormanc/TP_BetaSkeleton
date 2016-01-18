@@ -112,12 +112,14 @@
   <ItemGroup>
     <ClInclude Include="ColorRGB.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="Heightmap.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Svg.h" />
     <ClInclude Include="SvgHelper.h" />
     <ClInclude Include="Vector2d.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Heightmap.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Svg.cpp" />
