@@ -55,5 +55,6 @@ public:
 	void addPoint(const Vector2d &point, const int radius, const ColorRGB &color);
 	void addPoints(const std::vector<Vector2d> &points, const int radius, const ColorRGB &color);
 	void addLine(const Vector2d &p1, const Vector2d &p2, const int width, const ColorRGB &color);
+	void addLines(const std::vector<Vector2d> &points, const std::vector<Vector2d> &edges, const int radius, const ColorRGB &color);
 };
 
