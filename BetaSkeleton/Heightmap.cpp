@@ -26,7 +26,8 @@ Heightmap::Heightmap(const char *filename)
 
 			for (int y = 0; y < height * 3; y += 3) {
 				int idx = y + x * width;
-				float gray_scale = ((float)m_Ptr[idx] + (float)m_Ptr[idx + 1] + (float)m_Ptr[idx + 2]) / 3; // Average method
+				float gray_scale = ((float)m_Ptr[idx] + (float)m_Ptr[idx + 1] + (float)m_Ptr[idx + 2]) / 3; // Average method [0, 255]
+				gray_scale /= maxColVal; // [0, 1]
 				map[x / 3].push_back(gray_scale);
 			}
 		}
