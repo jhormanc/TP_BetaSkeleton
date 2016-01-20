@@ -16,8 +16,8 @@ int main(char argc, char ** argv)
 	/***********************************************************************************************************************************************/
 	/*****************************************************     CONSTANTE    ************************************************************************/
 	/***********************************************************************************************************************************************/
-	const float WIDTH = 500;
-	const float HEIGHT = 500;
+	const float WIDTH = 660;
+	const float HEIGHT = 660;
 
 	const float STEP_X = 0.1f;
 	const float STEP_Y = 0.1f;
@@ -37,20 +37,20 @@ int main(char argc, char ** argv)
 	/*******************************************************     MAP     ***************************************************************************/
 	/***********************************************************************************************************************************************/
 
-	auto start = std::chrono::high_resolution_clock::now();
-	Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
-	//map.CalcBetaSkeleton(GAMMA);
-	map.CalcBetaSkeletonWithMoon(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT);
-	Svg svg("test.svg", WIDTH, HEIGHT);
+	//auto start = std::chrono::high_resolution_clock::now();
+	//Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
+	////map.CalcBetaSkeleton(GAMMA);
+	//map.CalcBetaSkeletonWithMoon(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT);
+	//Svg svg("test.svg", WIDTH, HEIGHT);
 
-	svg.addPoints(map.betaSkeletonLunePoints, POINT_RADIUS, PURPLE);
-	svg.addPoints(map.towns, POINT_RADIUS, RED);
-	svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
-	svg.save();
+	//svg.addPoints(map.betaSkeletonLunePoints, POINT_RADIUS, PURPLE);
+	//svg.addPoints(map.towns, POINT_RADIUS, RED);
+	//svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
+	//svg.save();
 
-	auto end = std::chrono::high_resolution_clock::now();
-	float timeRes = std::chrono::duration<float, std::milli>(end - start).count();
-	std::cout << timeRes / (float)REPEAT << "ms" << std::endl;
+	//auto end = std::chrono::high_resolution_clock::now();
+	//float timeRes = std::chrono::duration<float, std::milli>(end - start).count();
+	//std::cout << timeRes / (float)REPEAT << "ms" << std::endl;
 
 
 	/***********************************************************************************************************************************************/
@@ -71,18 +71,20 @@ int main(char argc, char ** argv)
 	/*******************************************************  TEST SVG  ****************************************************************************/
 	/***********************************************************************************************************************************************/
 	/*Svg svg("test.svg", WIDTH, HEIGHT);
-	*/
-	//svg.addPoint(Vector2d(50, 50), 5, ColorRGB { 255, 0, 0 });
-	//svg.addLine(Vector2d(0, 0), Vector2d(30, 100), 2, ColorRGB{ 0, 255, 0 });
+	Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
+	
+	svg.addPoint(Vector2d(50, 50), 5, ColorRGB { 255, 0, 0 });
+	svg.addLine(Vector2d(0, 0), Vector2d(30, 100), 2, ColorRGB{ 0, 255, 0 });
 
-	//svg.addPoint(Vector2d(50, 50), 5, ColorRGB { 255, 0, 0 });
-	//svg.addLine(Vector2d(0, 0), Vector2d(30, 100), 2, ColorRGB{ 0, 255, 0 });
+	svg.addPoint(Vector2d(50, 50), 5, ColorRGB { 255, 0, 0 });
+	svg.addLine(Vector2d(0, 0), Vector2d(30, 100), 2, ColorRGB{ 0, 255, 0 });
 
-	//	svg.addPoints(map.waysPoints, POINT_RADIUS, BLUE);
+	svg.addPoints(map.waysPoints, POINT_RADIUS, BLUE);
 
-
-	//svg.addPoints(map.towns, POINT_RADIUS, RED);
-	//svg.save();
+	
+	svg.addPoints(map.towns, POINT_RADIUS, RED);
+	
+	svg.save();*/
 
 	//Heightmap heightmap = Heightmap("Heightmap.ppm");
 
@@ -124,13 +126,15 @@ int main(char argc, char ** argv)
 	/*/***********************************************************************************************************************************************/
 	/*******************************************************   HEIGHTMAP   *************************************************************************/
 	/***********************************************************************************************************************************************/
-	/*Heightmap heightmap = Heightmap("Heightmap2.ppm", 1.0f);
+	Heightmap heightmap = Heightmap("france.ppm", 1.0f);
+	//Heightmap heightmap = Heightmap("france.ppm", 1.0f);
 
-	Map map1(Map::GenTowns1(0, 0, WIDTH, HEIGHT));
-	Map map2(Map::GenTowns1(0, 0, WIDTH, HEIGHT));
-	//Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
+	/*Map map1(Map::GenTowns1(0, 0, WIDTH, HEIGHT));
+	Map map2(Map::GenTowns1(0, 0, WIDTH, HEIGHT));*/
+	Map map1(Map::GenTowns2(0, 0, WIDTH, HEIGHT));
+	Map map2(Map::GenTowns2(0, 0, WIDTH, HEIGHT));
 
-	map1.CalcBetaSkeleton(GAMMA, STEP_X, STEP_Y);
+	map1.CalcBetaSkeleton(GAMMA);
 
 	Svg svg1("test0.svg", WIDTH, HEIGHT);
 
@@ -142,11 +146,12 @@ int main(char argc, char ** argv)
 	map2.CalcBetaSkeletonHeightmap(GAMMA, STEP_X, STEP_Y, heightmap);
 
 	Svg svg2("test1.svg", WIDTH, HEIGHT);
-
+	svg2.addImg("heightmap.jpg", WIDTH, HEIGHT);
+	//svg2.addImg("france.jpg", WIDTH, HEIGHT);
 	svg2.addLines(map2.waysPoints, map2.waysEdges, LINE_WIDTH, BLUE);
 
 	svg2.addPoints(map2.towns, POINT_RADIUS, RED);
-	svg2.save();*/
+	svg2.save();
 
 	system("pause");
 	return 0;

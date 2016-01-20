@@ -23,6 +23,7 @@ public:
 
 	static Map GenRandomTowns(float, float, float, float, int);
 	static Map GenTowns1(float, float, float, float);
+	static Map GenTowns2(float, float, float, float);
 
 	void CalcBetaSkeleton(const float);
 	void CalcBetaSkeletonWithMoon(const float, const float, const float, const float, const float);

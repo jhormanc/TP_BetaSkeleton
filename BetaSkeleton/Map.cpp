@@ -35,6 +35,25 @@ Map Map::GenTowns1(float xMin_, float yMin_, float xMax_, float yMax_) {
 	return Map(towns, xMin_, yMin_, xMax_, yMax_);
 }
 
+// Marche avec france.ppm
+Map Map::GenTowns2(float xMin_, float yMin_, float xMax_, float yMax_) {
+	std::vector<Vector2d> towns = {
+		Vector2d(530, 395), // Lyon
+		Vector2d(375, 155), // Paris
+		Vector2d(566, 577), // Marseille
+		Vector2d(72, 203), // Brest 
+		Vector2d(177, 285), // Nantes
+		Vector2d(205, 552), // Biarritz
+		Vector2d(347, 560), // Toulouse
+		Vector2d(620, 203), // Strasbourg
+		Vector2d(482, 559), // Montpellier
+		Vector2d(402, 38), // Lilles
+		Vector2d(450, 407) // Clermont Ferrand
+	};
+
+	return Map(towns, xMin_, yMin_, xMax_, yMax_);
+}
+
 
 void Map::AddWayFromPointList(const std::vector<Vector2d> & pointList)
 {
