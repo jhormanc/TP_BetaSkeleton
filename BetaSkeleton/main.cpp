@@ -16,6 +16,7 @@ int main(char argc, char ** argv)
 	/***********************************************************************************************************************************************/
 	/*****************************************************     CONSTANTE    ************************************************************************/
 	/***********************************************************************************************************************************************/
+
 	const float WIDTH = 660;
 	const float HEIGHT = 660;
 
@@ -34,14 +35,24 @@ int main(char argc, char ** argv)
 
 
 	/***********************************************************************************************************************************************/
-	/*******************************************************     MAP     ***************************************************************************/
-	/***********************************************************************************************************************************************/
+	/************************************************************************* MAP     ******************** /
+		/***********************************************************************************************************************************************/
+
+		auto start = std::chrono::high_resolution_clock::now();
+	//Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
 
 	//auto start = std::chrono::high_resolution_clock::now();
 	//Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
 	////map.CalcBetaSkeleton(GAMMA);
 	//map.CalcBetaSkeletonWithMoon(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT);
 	//Svg svg("test.svg", WIDTH, HEIGHT);
+
+	//map.CalcBetaSkeleton(GAMMA);
+	//map.CalcBetaSkeletonWithMoon(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT);
+	/*Map map(Map::GenTowns1(0, 0, WIDTH, HEIGHT));
+	Heightmap heightmap("Heightmap.ppm", 1.f);
+	map.CalcBetaSkeletonWithMoonHeightmap(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT, heightmap);
+	Svg svg("test.svg", WIDTH, HEIGHT);*/
 
 	//svg.addPoints(map.betaSkeletonLunePoints, POINT_RADIUS, PURPLE);
 	//svg.addPoints(map.towns, POINT_RADIUS, RED);
@@ -51,7 +62,6 @@ int main(char argc, char ** argv)
 	//auto end = std::chrono::high_resolution_clock::now();
 	//float timeRes = std::chrono::duration<float, std::milli>(end - start).count();
 	//std::cout << timeRes / (float)REPEAT << "ms" << std::endl;
-
 
 	/***********************************************************************************************************************************************/
 	/*******************************************************    MOON     ***************************************************************************/
@@ -127,31 +137,23 @@ int main(char argc, char ** argv)
 	/*******************************************************   HEIGHTMAP   *************************************************************************/
 	/***********************************************************************************************************************************************/
 	Heightmap heightmap = Heightmap("france.ppm", 1.0f);
-	//Heightmap heightmap = Heightmap("france.ppm", 1.0f);
+	//Heightmap heightmap = Heightmap("Heightmap.ppm", 1.0f);
 
 	/*Map map1(Map::GenTowns1(0, 0, WIDTH, HEIGHT));
 	Map map2(Map::GenTowns1(0, 0, WIDTH, HEIGHT));*/
-	Map map1(Map::GenTowns2(0, 0, WIDTH, HEIGHT));
-	Map map2(Map::GenTowns2(0, 0, WIDTH, HEIGHT));
+	//Map map1(Map::GenTowns2(0, 0, WIDTH, HEIGHT));
+	Map map(Map::GenTowns2(0, 0, WIDTH, HEIGHT));
 
-	map1.CalcBetaSkeleton(GAMMA);
+	map.CalcBetaSkeletonHeightmap(GAMMA, heightmap);
+	//map.CalcBetaSkeletonWithMoonHeightmap(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT, heightmap);
 
-	Svg svg1("test0.svg", WIDTH, HEIGHT);
+	Svg svg("test1.svg", WIDTH, HEIGHT);
+	svg.addImg("france.jpg", WIDTH, HEIGHT);
+	//svg.addImg("heightmap.jpg", WIDTH, HEIGHT);
+	svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
 
-	svg1.addLines(map1.waysPoints, map1.waysEdges, LINE_WIDTH, BLUE);
-
-	svg1.addPoints(map1.towns, POINT_RADIUS, RED);
-	svg1.save();
-
-	map2.CalcBetaSkeletonHeightmap(GAMMA, STEP_X, STEP_Y, heightmap);
-
-	Svg svg2("test1.svg", WIDTH, HEIGHT);
-	svg2.addImg("heightmap.jpg", WIDTH, HEIGHT);
-	//svg2.addImg("france.jpg", WIDTH, HEIGHT);
-	svg2.addLines(map2.waysPoints, map2.waysEdges, LINE_WIDTH, BLUE);
-
-	svg2.addPoints(map2.towns, POINT_RADIUS, RED);
-	svg2.save();
+	svg.addPoints(map.towns, POINT_RADIUS, RED);
+	svg.save();
 
 	system("pause");
 	return 0;

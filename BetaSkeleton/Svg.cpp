@@ -69,7 +69,6 @@ void Svg::addLine(const Vector2d &p1, const Vector2d &p2, const int width, const
 	body += ss.str();
 }
 
-
 void Svg::addLines(const std::vector<Vector2d> &points, const std::vector<Vector2d> &edges, const int width, const ColorRGB &color)
 {
 	for (int i = 0; i < edges.size(); i++)
@@ -81,13 +80,13 @@ void Svg::addLines(const std::vector<Vector2d> &points, const std::vector<Vector
 void Svg::addImg(const std::string filename, const int width, const int height)
 {
 	std::stringstream ss;
-	ss << SvgHelper::elemStart("image") 
+	ss << SvgHelper::elemStart("image")
 		<< SvgHelper::attribute("xlink:href", filename)
 		<< SvgHelper::attribute("x", 0)
 		<< SvgHelper::attribute("y", 0)
 		<< SvgHelper::attribute("height", height)
 		<< SvgHelper::attribute("width", width)
-		 << SvgHelper::emptyElemEnd();
+		<< SvgHelper::emptyElemEnd();
 
 	body += ss.str();
 }
