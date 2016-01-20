@@ -16,8 +16,8 @@ int main(char argc, char ** argv)
 	/***********************************************************************************************************************************************/
 	/*****************************************************     CONSTANTE    ************************************************************************/
 	/***********************************************************************************************************************************************/
-	const float WIDTH = 500;
-	const float HEIGHT = 500;
+	const float WIDTH = 200;
+	const float HEIGHT = 200;
 
 	const float STEP_X = 0.1f;
 	const float STEP_Y = 0.1f;
@@ -34,13 +34,17 @@ int main(char argc, char ** argv)
 
 
 	/***********************************************************************************************************************************************/
-	/*******************************************************     MAP     ***************************************************************************/
-	/***********************************************************************************************************************************************/
+	/************************************************************************* MAP     ******************** /
+		/***********************************************************************************************************************************************/
 
-	auto start = std::chrono::high_resolution_clock::now();
-	Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
+		auto start = std::chrono::high_resolution_clock::now();
+	//Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
+
 	//map.CalcBetaSkeleton(GAMMA);
-	map.CalcBetaSkeletonWithMoon(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT);
+	//map.CalcBetaSkeletonWithMoon(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT);
+	Map map(Map::GenTowns1(0, 0, WIDTH, HEIGHT));
+	Heightmap heightmap("Heightmap.ppm", 1.f);
+	map.CalcBetaSkeletonWithMoonHeightmap(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT, heightmap);
 	Svg svg("test.svg", WIDTH, HEIGHT);
 
 	svg.addPoints(map.betaSkeletonLunePoints, POINT_RADIUS, PURPLE);
@@ -51,7 +55,6 @@ int main(char argc, char ** argv)
 	auto end = std::chrono::high_resolution_clock::now();
 	float timeRes = std::chrono::duration<float, std::milli>(end - start).count();
 	std::cout << timeRes / (float)REPEAT << "ms" << std::endl;
-
 
 	/***********************************************************************************************************************************************/
 	/*******************************************************    MOON     ***************************************************************************/

@@ -9,7 +9,7 @@ class Map
 	bool IsInBetaSkeleton(const Vector2d &, const Vector2d &, const Vector2d &, float);
 	bool IsInMoonBetaSkeleton(const Vector2d &, const Vector2d &, const Vector2d &, float);
 	bool IsInBetaSkeletonHeightmap(const Vector2d &, const Vector2d &, const Vector2d &, float, Heightmap &);
-
+	bool IsInMoonBetaSkeletonHeightmap(const Vector2d &, const Vector2d &, const Vector2d &, float, Heightmap &);
 	void AddWayFromPointList(const std::vector<Vector2d> &);
 public:
 	std::vector<Vector2d> towns;
@@ -26,6 +26,7 @@ public:
 
 	void CalcBetaSkeleton(const float);
 	void CalcBetaSkeletonWithMoon(const float, const float, const float, const float, const float);
-	void CalcBetaSkeletonHeightmap(const float, const float, const float, Heightmap &);
+	void CalcBetaSkeletonHeightmap(const float, Heightmap &);
+	void CalcBetaSkeletonWithMoonHeightmap(const float, const float, const float, const float, const float, Heightmap &);
 };
 

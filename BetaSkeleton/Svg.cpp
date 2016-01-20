@@ -76,3 +76,17 @@ void Svg::addLines(const std::vector<Vector2d> &points, const std::vector<Vector
 		addLine(points[(int)edges[i].x], points[(int)edges[i].y], width, color);
 	}
 }
+
+void Svg::addImg(const std::string filename, const int width, const int height)
+{
+	std::stringstream ss;
+	ss << SvgHelper::elemStart("image")
+		<< SvgHelper::attribute("xlink:href", filename)
+		<< SvgHelper::attribute("x", 0)
+		<< SvgHelper::attribute("y", 0)
+		<< SvgHelper::attribute("height", height)
+		<< SvgHelper::attribute("width", width)
+		<< SvgHelper::emptyElemEnd();
+
+	body += ss.str();
+}
