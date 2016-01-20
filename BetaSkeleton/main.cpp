@@ -17,8 +17,8 @@ int main(char argc, char ** argv)
 	/*****************************************************     CONSTANTE    ************************************************************************/
 	/***********************************************************************************************************************************************/
 
-	const float WIDTH = 660;
-	const float HEIGHT = 660;
+	const float WIDTH = 1024;
+	const float HEIGHT = 1024;
 
 	const float STEP_X = 0.1f;
 	const float STEP_Y = 0.1f;
@@ -136,19 +136,19 @@ int main(char argc, char ** argv)
 	/*/***********************************************************************************************************************************************/
 	/*******************************************************   HEIGHTMAP   *************************************************************************/
 	/***********************************************************************************************************************************************/
-	Heightmap heightmap = Heightmap("france.ppm", 1.0f);
+	Heightmap heightmap = Heightmap("Heightmap2.ppm", 1.0f);
 	//Heightmap heightmap = Heightmap("Heightmap.ppm", 1.0f);
 
 	/*Map map1(Map::GenTowns1(0, 0, WIDTH, HEIGHT));
 	Map map2(Map::GenTowns1(0, 0, WIDTH, HEIGHT));*/
 	//Map map1(Map::GenTowns2(0, 0, WIDTH, HEIGHT));
-	Map map(Map::GenTowns2(0, 0, WIDTH, HEIGHT));
+	Map map(Map::GenTowns1(0, 0, WIDTH, HEIGHT));
 
 	map.CalcBetaSkeletonHeightmap(GAMMA, heightmap);
 	//map.CalcBetaSkeletonWithMoonHeightmap(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT, heightmap);
 
 	Svg svg("test1.svg", WIDTH, HEIGHT);
-	svg.addImg("france.jpg", WIDTH, HEIGHT);
+	svg.addImg("heightmap.jpg", WIDTH, HEIGHT);
 	//svg.addImg("heightmap.jpg", WIDTH, HEIGHT);
 	svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
 

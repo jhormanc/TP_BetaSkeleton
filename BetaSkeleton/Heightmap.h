@@ -3,11 +3,11 @@
 #include <vector>
 #include <iostream>
 #include <fstream> 
-#include <string>
-#include <CImg.h>
-#include "Vector2d.h"
+#include <string>/*
+#include "CImg.h"*/
+#include "Vector2d.h"/*
 
-using namespace cimg_library;
+using namespace cimg_library;*/
 
 class Heightmap
 {
@@ -21,5 +21,6 @@ public:
 	~Heightmap();
 
 	float getDistance(const Vector2d &p0, const Vector2d &p1);
+	bool isABCanPass(const Vector2d &A, const Vector2d &B);
 };
 

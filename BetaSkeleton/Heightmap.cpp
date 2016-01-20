@@ -3,27 +3,8 @@
 
 Heightmap::Heightmap(const char *filename, float influence)
 {
-	CImg<unsigned char> src(filename);
-	int width = src.width();
-	int height = src.height();
-	unsigned char* ptr = src.data(10, 10);
 
-	for (int x = 0; x < width; x++) 
-	{
-		map.push_back(std::vector<float>());
 
-		for (int y = 0; y < height; y++) 
-		{
-			unsigned char* ptr = src.data(x, y);
-
-			float gray_scale = 255.0f - ((float)*ptr);
-																													
-			gray_scale = gray_scale * influence;
-			map[x].push_back(gray_scale);
-		}
-	}
-
-	return;
 
 	std::ifstream is (filename, std::ifstream::binary);
 
@@ -58,9 +39,10 @@ Heightmap::Heightmap(const char *filename, float influence)
 
 				//std::cout << r << " " << g << " " << b  << std::endl;
 				
-				float gray_scale = 255.0f - ((float)r + (float)g + (float)b) / 3.0f; // Average method [0, 255]
-				gray_scale /= maxColVal; // [0, 1]
-				gray_scale = gray_scale * influence;
+				float gray_scale = 255.f - ((float)r + (float)g + (float)b) / 3.0f; // Average method [0, 255]
+				//gray_scale /= maxColVal; // [0, 1]
+				
+			//	gray_scale = gray_scale * influence;
 				
 				map[y / 3].push_back(gray_scale);
 			}
@@ -73,16 +55,33 @@ Heightmap::Heightmap(const char *filename, float influence)
 
 float Heightmap::getDistance(const Vector2d &p0, const Vector2d &p1) {
 	float dist = 0;
-	float step = 1.0f / Vector2d::Distance(p0, p1);
+	float step = 0.1f;
+	Vector2d dir = Vector2d::Normalize(p1 - p0);
+	Vector2d current(p0);
+	while (Vector2d::Distance(p0, p1) > Vector2d::Distance(p0, current))
+	{
+		current = current + dir * step;
 
-	for (float t = 0; t < 1.0f; t+=step) {
-		int idx_x = (1 - t) * p0.x + t * p1.x;
-		int idx_y = (1 - t) * p0.y + t * p1.y;
-		
-		dist += map[idx_x][idx_y];
+		dist += map[current.y][current.x];
 	}
-
 	return dist;
+}
+bool Heightmap::isABCanPass(const Vector2d &A, const Vector2d &B)
+{	
+	float dist = 0;
+	float step = .1f;
+	float minH = 2.f;
+	float maxH = 210.f;
+	Vector2d dir = Vector2d::Normalize(B - A);
+	Vector2d current(A);
+	while (Vector2d::Distance(A, B) > Vector2d::Distance(A, current) )
+	{
+		current = current +  dir * step;
+	
+		if (map[current.y][current.x] > maxH)
+			return false;
+	}
+	return true;
 }
 
 
