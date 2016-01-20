@@ -1,21 +1,25 @@
 <?xml version="1.0" standalone="no" ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="1024px" height="1024px" xmlns="http://www.w3.org/2000/svg" version="1.1" >
-	<line x1="491.39" y1="599.05" x2="15.3442" y2="311.291" stroke-width="1" stroke="rgb(0,0,255)" />
-	<line x1="764.523" y1="842.588" x2="764.523" y2="842.588" stroke-width="1" stroke="rgb(0,0,255)" />
-	<line x1="525.86" y1="727.553" x2="15.3442" y2="311.291" stroke-width="1" stroke="rgb(0,0,255)" />
-	<line x1="15.3442" y1="311.291" x2="491.39" y2="599.05" stroke-width="1" stroke="rgb(0,0,255)" />
-	<line x1="15.3442" y1="311.291" x2="525.86" y2="727.553" stroke-width="1" stroke="rgb(0,0,255)" />
-	<line x1="15.3442" y1="311.291" x2="373.199" y2="93.5966" stroke-width="1" stroke="rgb(0,0,255)" />
-	<line x1="373.199" y1="93.5966" x2="15.3442" y2="311.291" stroke-width="1" stroke="rgb(0,0,255)" />
-	<circle cx="577.111" cy="1.28129" r="5" fill="rgb(255,0,0)" />
-	<circle cx="828.15" cy="197.944" r="5" fill="rgb(255,0,0)" />
-	<circle cx="491.39" cy="599.05" r="5" fill="rgb(255,0,0)" />
-	<circle cx="917.466" cy="358.698" r="5" fill="rgb(255,0,0)" />
-	<circle cx="764.523" cy="842.588" r="5" fill="rgb(255,0,0)" />
-	<circle cx="879.558" cy="178.287" r="5" fill="rgb(255,0,0)" />
-	<circle cx="525.86" cy="727.553" r="5" fill="rgb(255,0,0)" />
-	<circle cx="15.3442" cy="311.291" r="5" fill="rgb(255,0,0)" />
-	<circle cx="373.199" cy="93.5966" r="5" fill="rgb(255,0,0)" />
-	<circle cx="169.88" cy="150.848" r="5" fill="rgb(255,0,0)" />
+<svg width="1000px" height="1000px" xmlns="http://www.w3.org/2000/svg" version="1.1" >
+	<line x1="438.063" y1="885.922" x2="438.063" y2="885.922" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="438.063" y1="885.922" x2="230.903" y2="798.151" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="442.763" y1="67.7816" x2="96.1333" y2="657.735" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="96.1333" y1="657.735" x2="442.763" y2="67.7816" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="949.522" y1="721.793" x2="924.772" y2="107.15" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="230.903" y1="798.151" x2="438.063" y2="885.922" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="230.903" y1="798.151" x2="230.903" y2="798.151" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="499.222" y1="390.728" x2="499.222" y2="390.728" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="566.485" y1="22.7973" x2="924.772" y2="107.15" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="924.772" y1="107.15" x2="949.522" y2="721.793" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="924.772" y1="107.15" x2="566.485" y2="22.7973" stroke-width="1" stroke="rgb(0,0,255)" />
+	<circle cx="347.026" cy="296.976" r="5" fill="rgb(255,0,0)" />
+	<circle cx="438.063" cy="885.922" r="5" fill="rgb(255,0,0)" />
+	<circle cx="442.763" cy="67.7816" r="5" fill="rgb(255,0,0)" />
+	<circle cx="96.1333" cy="657.735" r="5" fill="rgb(255,0,0)" />
+	<circle cx="949.522" cy="721.793" r="5" fill="rgb(255,0,0)" />
+	<circle cx="640.065" cy="670.553" r="5" fill="rgb(255,0,0)" />
+	<circle cx="230.903" cy="798.151" r="5" fill="rgb(255,0,0)" />
+	<circle cx="499.222" cy="390.728" r="5" fill="rgb(255,0,0)" />
+	<circle cx="566.485" cy="22.7973" r="5" fill="rgb(255,0,0)" />
+	<circle cx="924.772" cy="107.15" r="5" fill="rgb(255,0,0)" />
 </svg>

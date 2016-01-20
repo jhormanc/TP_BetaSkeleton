@@ -93,7 +93,7 @@ void Map::CalcBetaSkeletonHeightmap(float gamma, const float STEP_X, const float
 			bool hasATownInBetaSkeleton = false;
 			for (int p = 0; p < size; ++p)
 			{
-				if (towns[p] != towns[a] && towns[p] != towns[b] && IsInBetaSkeletonHeightmap(towns[p], towns[a], towns[b], gamma, map))
+				if (p != a && p != b && IsInBetaSkeletonHeightmap(towns[p], towns[a], towns[b], gamma, map))
 				{
 					hasATownInBetaSkeleton = true;
 				}
