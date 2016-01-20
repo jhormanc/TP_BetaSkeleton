@@ -10,18 +10,18 @@
 
 int main(char argc, char ** argv)
 {
-	srand(time(NULL));
+	//srand(time(NULL));
 
 
 	/***********************************************************************************************************************************************/
 	/*****************************************************     CONSTANTE    ************************************************************************/
 	/***********************************************************************************************************************************************/
-	const float WIDTH = 1000;
-	const float HEIGHT = 1000;
+	const float WIDTH = 100;
+	const float HEIGHT = 100;
 
 	const float STEP_X = 0.1f;
 	const float STEP_Y = 0.1f;
-	const int TOWN_COUNT = 10;
+	const int TOWN_COUNT = 5;
 	const int TOWN_MAX = 100;
 	const float POINT_RADIUS = 5.f;
 	const float LINE_WIDTH = 1.f;
@@ -30,15 +30,40 @@ int main(char argc, char ** argv)
 	ColorRGB RED{ 255, 0, 0 };
 	ColorRGB BLUE{ 0, 0, 255 };
 
+	ColorRGB PURPLE{ 255, 0, 255 };
+
 
 	/***********************************************************************************************************************************************/
 	/*******************************************************     MAP     ***************************************************************************/
 	/***********************************************************************************************************************************************/
 
-	//Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
-	//map.CalcBetaSkeleton(GAMMA, STEP_X, STEP_Y);
+	auto start = std::chrono::high_resolution_clock::now();
+	Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
+	//map.CalcBetaSkeleton(GAMMA);
+	map.CalcBetaSkeletonWithMoon(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT);
+	Svg svg("test.svg", WIDTH, HEIGHT);
 
+	svg.addPoints(map.betaSkeletonLunePoints, POINT_RADIUS, RED);
+	svg.addPoints(map.towns, POINT_RADIUS, RED);
+	svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
+	svg.save();
 
+	auto end = std::chrono::high_resolution_clock::now();
+	float timeRes = std::chrono::duration<float, std::milli>(end - start).count();
+	std::cout << timeRes / (float)REPEAT << "ms" << std::endl;
+
+	/***********************************************************************************************************************************************/
+	/*******************************************************    MOON     ***************************************************************************/
+	/***********************************************************************************************************************************************/
+
+	/*Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
+	map.CalcBetaSkeletonWithMoon(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT);
+	Svg svg("test.svg", WIDTH, HEIGHT);
+
+	svg.addPoints(map.towns, POINT_RADIUS, RED);
+	svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
+	svg.addPoints(map.betaSkeletonLunePoints, POINT_RADIUS, PURPLE);
+	svg.save();*/
 	/***********************************************************************************************************************************************/
 	/*******************************************************  TEST SVG  ****************************************************************************/
 	/***********************************************************************************************************************************************/
@@ -46,15 +71,12 @@ int main(char argc, char ** argv)
 */
 	//svg.addPoint(Vector2d(50, 50), 5, ColorRGB { 255, 0, 0 });
 	//svg.addLine(Vector2d(0, 0), Vector2d(30, 100), 2, ColorRGB{ 0, 255, 0 });
-	//svg.addPoints(map.towns, POINT_RADIUS, RED);
 
-	//svg.addPoints(map.waysPoints, POINT_RADIUS, BLUE);
 	//svg.addPoint(Vector2d(50, 50), 5, ColorRGB { 255, 0, 0 });
 	//svg.addLine(Vector2d(0, 0), Vector2d(30, 100), 2, ColorRGB{ 0, 255, 0 });
 
 	//	svg.addPoints(map.waysPoints, POINT_RADIUS, BLUE);
 
-	//svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
 
 	//svg.addPoints(map.towns, POINT_RADIUS, RED);
 	//svg.save();
@@ -102,7 +124,7 @@ int main(char argc, char ** argv)
 	/*******************************************************   HEIGHTMAP   *************************************************************************/
 	/***********************************************************************************************************************************************/
 
-	Heightmap heightmap = Heightmap("Heightmap.ppm");
+	/*Heightmap heightmap = Heightmap("Heightmap.ppm");
 	Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
 	map.CalcBetaSkeletonHeightmap(GAMMA, STEP_X, STEP_Y, heightmap);
 
@@ -112,7 +134,7 @@ int main(char argc, char ** argv)
 	svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
 
 	svg.addPoints(map.towns, POINT_RADIUS, RED);
-	svg.save();
+	svg.save();*/
 
 	system("pause");
 	return 0;
