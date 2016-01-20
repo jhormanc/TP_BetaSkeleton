@@ -16,7 +16,7 @@ private:
 	std::vector<std::vector<float>> map;
 
 public:
-	Heightmap(const char *filename);
+	Heightmap(const char *filename, float influence);
 	~Heightmap();
 
 	float getDistance(const Vector2d &p0, const Vector2d &p1);

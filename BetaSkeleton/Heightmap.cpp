@@ -1,7 +1,7 @@
 #include "Heightmap.h"
 
 
-Heightmap::Heightmap(const char *filename)
+Heightmap::Heightmap(const char *filename, float influence)
 {
 	std::ifstream is (filename, std::ifstream::binary);
 
@@ -24,8 +24,9 @@ Heightmap::Heightmap(const char *filename)
 
 			for (int y = 0; y < height * 3; y += 3) {
 				int idx = y + x * width;
-				float gray_scale = ((float)m_Ptr[idx] + (float)m_Ptr[idx + 1] + (float)m_Ptr[idx + 2]) / 3; // Average method [0, 255]
+				float gray_scale = 255.0f - ((float)m_Ptr[idx] + (float)m_Ptr[idx + 1] + (float)m_Ptr[idx + 2]) / 3; // Average method [0, 255]
 				gray_scale /= maxColVal; // [0, 1]
+				gray_scale *= influence;
 				map[x / 3].push_back(gray_scale);
 			}
 		}
