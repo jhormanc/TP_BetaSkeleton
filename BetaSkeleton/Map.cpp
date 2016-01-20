@@ -48,7 +48,12 @@ Map Map::GenTowns2(float xMin_, float yMin_, float xMax_, float yMax_) {
 		Vector2d(620, 203), // Strasbourg
 		Vector2d(482, 559), // Montpellier
 		Vector2d(402, 38), // Lilles
-		Vector2d(450, 407) // Clermont Ferrand
+		Vector2d(450, 407), // Clermont Ferrand
+		Vector2d(282, 15), // Brighton
+		Vector2d(220, 8), // Southampton
+		Vector2d(72, 30), // Plymouth
+		Vector2d(208, 108), // Cherbourg
+		Vector2d(273, 150) // Caen
 	};
 
 	return Map(towns, xMin_, yMin_, xMax_, yMax_);

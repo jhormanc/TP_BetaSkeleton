@@ -3,6 +3,28 @@
 
 Heightmap::Heightmap(const char *filename, float influence)
 {
+	CImg<unsigned char> src(filename);
+	int width = src.width();
+	int height = src.height();
+	unsigned char* ptr = src.data(10, 10);
+
+	for (int x = 0; x < width; x++) 
+	{
+		map.push_back(std::vector<float>());
+
+		for (int y = 0; y < height; y++) 
+		{
+			unsigned char* ptr = src.data(x, y);
+
+			float gray_scale = 255.0f - ((float)*ptr);
+																													
+			gray_scale = gray_scale * influence;
+			map[x].push_back(gray_scale);
+		}
+	}
+
+	return;
+
 	std::ifstream is (filename, std::ifstream::binary);
 
 	if (is) {

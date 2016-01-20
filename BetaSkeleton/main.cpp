@@ -153,6 +153,7 @@ int main(char argc, char ** argv)
 	svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
 
 	svg.addPoints(map.towns, POINT_RADIUS, RED);
+	//svg.addPoints(map.betaSkeletonLunePoints, POINT_RADIUS, PURPLE);
 	svg.save();
 
 	system("pause");

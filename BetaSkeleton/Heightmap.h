@@ -4,9 +4,10 @@
 #include <iostream>
 #include <fstream> 
 #include <string>
-
+#include <CImg.h>
 #include "Vector2d.h"
 
+using namespace cimg_library;
 
 class Heightmap
 {
