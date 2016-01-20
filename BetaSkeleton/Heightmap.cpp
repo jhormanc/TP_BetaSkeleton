@@ -19,15 +19,28 @@ Heightmap::Heightmap(const char *filename, float influence)
 		m_Ptr = new char[size];
 		is.read(m_Ptr, size);
 
-		for (int x = 0; x < width * 3; x += 3) {
+		std::cout << magicNum << std::endl;
+		std::cout << width << height << maxColVal << std::endl;
+		std::cout << m_Ptr << std::endl;
+
+		for (int y = 0; y < height * 3; y += 3) {
+		
 			map.push_back(std::vector<float>());
 
-			for (int y = 0; y < height * 3; y += 3) {
-				int idx = y + x * width;
-				float gray_scale = 255.0f - ((float)m_Ptr[idx] + (float)m_Ptr[idx + 1] + (float)m_Ptr[idx + 2]) / 3.0f; // Average method [0, 255]
-				//gray_scale /= maxColVal; // [0, 1]
+			for (int x = 0; x < width * 3; x += 3) {
+				int idx = x + y * width;
+				
+				int r = m_Ptr[idx] & 0xff;
+				int g = m_Ptr[idx + 1] & 0xff;
+				int b = m_Ptr[idx + 2] & 0xff;
+
+				//std::cout << r << " " << g << " " << b  << std::endl;
+				
+				float gray_scale = 255.0f - ((float)r + (float)g + (float)b) / 3.0f; // Average method [0, 255]
+				gray_scale /= maxColVal; // [0, 1]
 				gray_scale = gray_scale * influence;
-				map[x / 3].push_back(gray_scale);
+				
+				map[y / 3].push_back(gray_scale);
 			}
 		}
 		is.close();
