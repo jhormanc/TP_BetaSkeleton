@@ -4,8 +4,8 @@
 
 int main(char argc, char ** argv)
 {
-	const float WIDTH = 1000;
-	const float HEIGHT = 1000;
+	const float WIDTH = 1024;
+	const float HEIGHT = 1024;
 
 	const float STEP_X = 0.1f;
 	const float STEP_Y = 0.1f;
@@ -16,8 +16,10 @@ int main(char argc, char ** argv)
 	ColorRGB RED{ 255, 0, 0 };
 	ColorRGB BLUE{ 0, 0, 255 };
 
+	Heightmap heightmap = Heightmap("Heightmap.ppm");
+
 	Map map(Map::GenRandomTowns(0, 0, WIDTH, HEIGHT, TOWN_COUNT));
-	map.CalcBetaSkeleton(GAMMA, STEP_X, STEP_Y);
+	map.CalcBetaSkeletonHeightmap(GAMMA, STEP_X, STEP_Y, heightmap);
 
 
 	Svg svg("test.svg", WIDTH, HEIGHT);
@@ -30,15 +32,13 @@ int main(char argc, char ** argv)
 	//svg.addPoint(Vector2d(50, 50), 5, ColorRGB { 255, 0, 0 });
 	//svg.addLine(Vector2d(0, 0), Vector2d(30, 100), 2, ColorRGB{ 0, 255, 0 });
 
-//	svg.addPoints(map.waysPoints, POINT_RADIUS, BLUE);
+	//svg.addPoints(map.waysPoints, POINT_RADIUS, BLUE);
 
 	svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
 
 	svg.addPoints(map.towns, POINT_RADIUS, RED);
 	svg.save();
 
-	//Heightmap heightmap = Heightmap("Heightmap.ppm");
-	//
 	//system("pause");
 	return 1;
 }

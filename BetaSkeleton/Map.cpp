@@ -44,6 +44,10 @@ bool Map::IsInBetaSkeleton(const Vector2d & p, const Vector2d & a, const Vector2
 	return std::pow(Vector2d::Distance(a, p), gamma) + std::pow(Vector2d::Distance(b, p), gamma) < std::pow(Vector2d::Distance(a, b), gamma);
 }
 
+bool Map::IsInBetaSkeletonHeightmap(const Vector2d & p, const Vector2d & a, const Vector2d & b, float gamma, Heightmap &map) {
+	return std::pow(map.getDistance(a, p), gamma) + std::pow(map.getDistance(b, p), gamma) < std::pow(map.getDistance(a, b), gamma);
+}
+
 void Map::CalcBetaSkeleton(float gamma, const float STEP_X, const float STEP_Y)
 {
 	std::vector<Vector2d> pointInBetaSkeleton;
@@ -74,4 +78,34 @@ void Map::CalcBetaSkeleton(float gamma, const float STEP_X, const float STEP_Y)
 		}
 	}
 	//AddWayFromPointList(pointInBetaSkeleton);
+}
+
+void Map::CalcBetaSkeletonHeightmap(float gamma, const float STEP_X, const float STEP_Y, Heightmap &map) {
+	std::vector<Vector2d> pointInBetaSkeleton;
+	int size = towns.size();
+	const float step_x = 0.1f;
+	bool hasATownInBetaSkeleton = false;
+	const float step_y = 0.1f;
+	for (int a = 0; a < size; ++a)
+	{
+		for (int b = 0; b < size; ++b)
+		{
+			bool hasATownInBetaSkeleton = false;
+			for (int p = 0; p < size; ++p)
+			{
+				if (towns[p] != towns[a] && towns[p] != towns[b] && IsInBetaSkeletonHeightmap(towns[p], towns[a], towns[b], gamma, map))
+				{
+					hasATownInBetaSkeleton = true;
+				}
+
+			}
+			if (!hasATownInBetaSkeleton)
+			{
+
+				waysPoints.push_back(towns[a]);
+				waysPoints.push_back(towns[b]);
+				waysEdges.push_back(Vector2d(waysPoints.size() - 2, waysPoints.size() - 1));
+			}
+		}
+	}
 }

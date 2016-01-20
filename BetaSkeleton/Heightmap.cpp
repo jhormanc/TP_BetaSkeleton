@@ -19,8 +19,6 @@ Heightmap::Heightmap(const char *filename)
 		m_Ptr = new char[size];
 		is.read(m_Ptr, size);
 
-		std::vector<std::vector<float>> map = std::vector<std::vector<float>>();
-
 		for (int x = 0; x < width * 3; x += 3) {
 			map.push_back(std::vector<float>());
 
@@ -35,6 +33,20 @@ Heightmap::Heightmap(const char *filename)
 	} else {
 		std::cout << "Error: can't open file." << std::endl;
 	}
+}
+
+float Heightmap::getDistance(const Vector2d &p0, const Vector2d &p1) {
+	float dist = 0;
+	float step = 1.0f / Vector2d::Distance(p0, p1);
+
+	for (float t = 0; t < 1.0f; t+=step) {
+		int idx_x = (1 - t) * p0.x + t * p1.x;
+		int idx_y = (1 - t) * p0.y + t * p1.y;
+		
+		dist += map[idx_x][idx_y];
+	}
+
+	return dist;
 }
 
 
