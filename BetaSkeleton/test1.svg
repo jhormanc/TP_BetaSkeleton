@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1024px" height="1024px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" >
+	<image xlink:href="heightmap.jpg" x="0" y="0" height="1024" width="1024" />
+	<line x1="700" y1="260" x2="700" y2="260" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="700" y1="260" x2="490" y2="400" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="380" y1="330" x2="380" y2="330" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="380" y1="330" x2="490" y2="400" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="380" y1="330" x2="280" y2="420" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="490" y1="400" x2="490" y2="400" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="490" y1="400" x2="560" y2="600" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="280" y1="420" x2="280" y2="420" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="280" y1="420" x2="360" y2="560" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="280" y1="420" x2="215" y2="650" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="360" y1="560" x2="360" y2="560" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="360" y1="560" x2="560" y2="600" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="360" y1="560" x2="215" y2="650" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="560" y1="600" x2="560" y2="600" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="560" y1="600" x2="870" y2="760" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="215" y1="650" x2="215" y2="650" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="215" y1="650" x2="350" y2="820" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="350" y1="820" x2="350" y2="820" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="870" y1="760" x2="870" y2="760" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="870" y1="760" x2="900" y2="800" stroke-width="1" stroke="rgb(0,0,255)" />
+	<line x1="900" y1="800" x2="900" y2="800" stroke-width="1" stroke="rgb(0,0,255)" />
+	<circle cx="700" cy="260" r="1" fill="rgb(255,0,0)" />
+	<circle cx="380" cy="330" r="1" fill="rgb(255,0,0)" />
+	<circle cx="490" cy="400" r="1" fill="rgb(255,0,0)" />
+	<circle cx="280" cy="420" r="1" fill="rgb(255,0,0)" />
+	<circle cx="360" cy="560" r="1" fill="rgb(255,0,0)" />
+	<circle cx="560" cy="600" r="1" fill="rgb(255,0,0)" />
+	<circle cx="215" cy="650" r="1" fill="rgb(255,0,0)" />
+	<circle cx="350" cy="820" r="1" fill="rgb(255,0,0)" />
+	<circle cx="870" cy="760" r="1" fill="rgb(255,0,0)" />
+	<circle cx="900" cy="800" r="1" fill="rgb(255,0,0)" />
+</svg>
