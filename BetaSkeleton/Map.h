@@ -16,6 +16,7 @@ public:
 	std::vector<Vector2d> betaSkeletonLunePoints;
 	std::vector<Vector2d> waysPoints;
 	std::vector<Vector2d> waysEdges;
+	std::vector<float> waysCost;
 
 	float xMax, yMax, xMin, yMin;
 

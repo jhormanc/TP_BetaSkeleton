@@ -58,14 +58,22 @@ float Heightmap::getDistance(const Vector2d &p0, const Vector2d &p1) {
 	float step = 0.1f;
 	Vector2d dir = Vector2d::Normalize(p1 - p0);
 	Vector2d current(p0);
-	while (Vector2d::Distance(p0, p1) > Vector2d::Distance(p0, current))
+	int n = 10;
+	float distance = Vector2d::Distance(p0, p1);
+	for (int i = 0; i < n; ++i)
 	{
-		current = current + dir * step;
-
-		dist += map[current.y][current.x];
+		/*while (distance > Vector2d::Distance(p0, current))
+		{*/
+		Vector2d pi = p0 + (p1 - p0) * (i / n);
+		//    current = current + dir * step;
+		float z = map[pi.y][pi.x];
+		Vector2d next = p0 + (p1 - p0) * ((i + 1) / n);
+		float dz = std::abs(map[next.y][next.x] - z);
+		dist += (distance / n) * (1.f + (z / 127.f) + (dz * 4));
 	}
 	return dist;
 }
+
 bool Heightmap::isABCanPass(const Vector2d &A, const Vector2d &B)
 {	
 	float dist = 0;

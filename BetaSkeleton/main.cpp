@@ -137,7 +137,7 @@ int main(char argc, char ** argv)
 	/*******************************************************   HEIGHTMAP   *************************************************************************/
 	/***********************************************************************************************************************************************/
 	Heightmap heightmap = Heightmap("Heightmap2.ppm", 1.0f);
-	//Heightmap heightmap = Heightmap("Heightmap.ppm", 1.0f);
+	//Heightmap heightmap = Heightmap("france.ppm", 1.0f);
 
 	/*Map map1(Map::GenTowns1(0, 0, WIDTH, HEIGHT));
 	Map map2(Map::GenTowns1(0, 0, WIDTH, HEIGHT));*/
@@ -149,10 +149,11 @@ int main(char argc, char ** argv)
 
 	Svg svg("test1.svg", WIDTH, HEIGHT);
 	svg.addImg("heightmap.jpg", WIDTH, HEIGHT);
-	//svg.addImg("heightmap.jpg", WIDTH, HEIGHT);
+	//svg.addImg("france.jpg", WIDTH, HEIGHT);
 	svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
 
 	svg.addPoints(map.towns, POINT_RADIUS, RED);
+	svg.addCost(map.waysPoints, map.waysEdges, map.waysCost, ColorRGB{ 0.f, 200.f, 0.f });
 	//svg.addPoints(map.betaSkeletonLunePoints, POINT_RADIUS, PURPLE);
 	svg.save();
 

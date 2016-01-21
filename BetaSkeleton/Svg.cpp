@@ -77,6 +77,18 @@ void Svg::addLines(const std::vector<Vector2d> &points, const std::vector<Vector
 	}
 }
 
+void Svg::addCost(const std::vector<Vector2d> &points, const std::vector<Vector2d> &edges, const std::vector<float> &costs, const ColorRGB &color)
+{
+	for (int i = 0; i < edges.size(); i++)
+	{
+		Vector2d p1 = points[(int)edges[i].x];
+		Vector2d p2 = points[(int)edges[i].y];
+		float x = (p2.x + p1.x) * 0.5f;
+		float y = (p2.y + p1.y) * 0.5f;
+		addText(std::to_string((int)costs[i]), x, y, color);
+	}
+}
+
 void Svg::addImg(const std::string filename, const int width, const int height)
 {
 	std::stringstream ss;
@@ -87,6 +99,20 @@ void Svg::addImg(const std::string filename, const int width, const int height)
 		<< SvgHelper::attribute("height", height)
 		<< SvgHelper::attribute("width", width)
 		<< SvgHelper::emptyElemEnd();
+
+	body += ss.str();
+}
+
+void Svg::addText(const std::string &text, float x, const float y, const ColorRGB &color)
+{
+	std::stringstream ss;
+	ss << "<text "
+		<< SvgHelper::attribute("x", x)
+		<< SvgHelper::attribute("y", y)
+		<< SvgHelper::attribute("fill", color.toString())
+		<< ">"
+		<< text.c_str()
+		<< "</text>";
 
 	body += ss.str();
 }

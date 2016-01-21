@@ -57,5 +57,7 @@ public:
 	void addLine(const Vector2d &p1, const Vector2d &p2, const int width, const ColorRGB &color);
 	void addLines(const std::vector<Vector2d> &points, const std::vector<Vector2d> &edges, const int radius, const ColorRGB &color);
 	void addImg(const std::string filename, const int width, const int height);
+	void addText(const std::string &text, const float x, const float y, const ColorRGB &color);
+	void addCost(const std::vector<Vector2d> &points, const std::vector<Vector2d> &edges, const std::vector<float> &costs, const ColorRGB &color);
 };
 

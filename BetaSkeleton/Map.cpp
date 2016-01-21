@@ -181,33 +181,21 @@ void Map::CalcBetaSkeletonHeightmap(float gamma, Heightmap &map) {
 	{
 		for (int b = cmp; b < size; ++b)
 		{
-			if (map.isABCanPass(towns[a], towns[b]))
+			if (a == b) continue;
+			bool hasATownInBetaSkeleton = false;
+			for (int p = 0; p < size; ++p)
 			{
-				bool hasATownInBetaSkeleton = false;
-				for (int p = 0; p < size; ++p)
+				if (p != a && p != b && IsInBetaSkeletonHeightmap(towns[p], towns[a], towns[b], gamma, map))
 				{
-
-//					if (map.isABCanPass(towns[a], towns[p]) || map.isABCanPass(towns[b], towns[p]))
-	//				{
-						if (p != a && p != b && IsInBetaSkeletonHeightmap(towns[p], towns[a], towns[b], gamma, map))
-						{
-							hasATownInBetaSkeleton = true;
-						}
-		//			} 
-					/*
-					else
-					{
-						hasATownInBetaSkeleton = true;
-					}*/
-
+					hasATownInBetaSkeleton = true;
 				}
-				if (!hasATownInBetaSkeleton)
-				{
-
-					waysPoints.push_back(towns[a]);
-					waysPoints.push_back(towns[b]);
-					waysEdges.push_back(Vector2d(waysPoints.size() - 2, waysPoints.size() - 1));
-				}
+			}
+			if (!hasATownInBetaSkeleton)
+			{
+				waysPoints.push_back(towns[a]);
+				waysPoints.push_back(towns[b]);
+				waysCost.push_back(map.getDistance(towns[a], towns[b]));
+				waysEdges.push_back(Vector2d(waysPoints.size() - 2, waysPoints.size() - 1));
 			}
 		}
 		++cmp;
@@ -227,6 +215,7 @@ void Map::CalcBetaSkeletonWithMoonHeightmap(const float gamma, const float STEP_
 	{
 		for (int b = cmp; b < size; ++b)
 		{
+			if (a == b) continue;
 			bool hasATownInBetaSkeleton = false;
 			for (int p = 0; p < size; ++p)
 			{
