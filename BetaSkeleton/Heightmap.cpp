@@ -58,6 +58,7 @@ float Heightmap::getDistance(const Vector2d &p0, const Vector2d &p1) {
 	float step = 0.1f;
 	Vector2d dir = Vector2d::Normalize(p1 - p0);
 	Vector2d current(p0);
+
 	int n = 10;
 	float distance = Vector2d::Distance(p0, p1);
 	for (int i = 0; i < n; ++i)
@@ -86,8 +87,8 @@ bool Heightmap::isABCanPass(const Vector2d &A, const Vector2d &B)
 	{
 		current = current +  dir * step;
 	
-		if (map[current.y][current.x] > maxH)
-			return false;
+		//if (map[current.y][current.x] > maxH)
+		//	return false;
 	}
 	return true;
 }
