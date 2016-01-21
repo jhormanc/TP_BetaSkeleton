@@ -21,6 +21,5 @@ public:
 	~Heightmap();
 
 	float getDistance(const Vector2d &p0, const Vector2d &p1);
-	bool isABCanPass(const Vector2d &A, const Vector2d &B);
 };
 

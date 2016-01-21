@@ -17,8 +17,12 @@ int main(char argc, char ** argv)
 	/*****************************************************     CONSTANTE    ************************************************************************/
 	/***********************************************************************************************************************************************/
 
+	// Size Heightmap
 	const float WIDTH = 1024;
 	const float HEIGHT = 1024;
+	// Size heightmap France
+	//const float WIDTH = 660;
+	//const float HEIGHT = 660;
 
 	const float STEP_X = 0.1f;
 	const float STEP_Y = 0.1f;
@@ -139,21 +143,22 @@ int main(char argc, char ** argv)
 	Heightmap heightmap = Heightmap("Heightmap2.ppm", 1.0f);
 	//Heightmap heightmap = Heightmap("france.ppm", 1.0f);
 
-	/*Map map1(Map::GenTowns1(0, 0, WIDTH, HEIGHT));
-	Map map2(Map::GenTowns1(0, 0, WIDTH, HEIGHT));*/
-	//Map map1(Map::GenTowns2(0, 0, WIDTH, HEIGHT));
+	// France towns
+	//Map map(Map::GenTowns2(0, 0, WIDTH, HEIGHT));
+	// Heightmap towns
 	Map map(Map::GenTowns1(0, 0, WIDTH, HEIGHT));
-
+	
 	map.CalcBetaSkeletonHeightmap(GAMMA, heightmap);
 	//map.CalcBetaSkeletonWithMoonHeightmap(GAMMA, STEP_X, STEP_Y, WIDTH, HEIGHT, heightmap);
 
 	Svg svg("test1.svg", WIDTH, HEIGHT);
 	svg.addImg("heightmap.jpg", WIDTH, HEIGHT);
 	//svg.addImg("france.jpg", WIDTH, HEIGHT);
+
 	svg.addLines(map.waysPoints, map.waysEdges, LINE_WIDTH, BLUE);
 
 	svg.addPoints(map.towns, POINT_RADIUS, RED);
-	svg.addCost(map.waysPoints, map.waysEdges, map.waysCost, ColorRGB{ 0.f, 200.f, 0.f });
+	svg.addCost(map.waysPoints, map.waysEdges, map.waysCost, ColorRGB{ 255.f, 0.f, 0.f });
 	//svg.addPoints(map.betaSkeletonLunePoints, POINT_RADIUS, PURPLE);
 	svg.save();
 

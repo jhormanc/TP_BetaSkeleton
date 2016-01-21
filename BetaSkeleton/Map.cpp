@@ -98,7 +98,6 @@ void Map::CalcBetaSkeleton(float gamma)
 	int cmp = 0;
 	for (int a = 0; a < size; ++a)
 	{
-
 		for (int b = cmp; b < size; ++b)
 		{
 			if (a == b) continue;
@@ -109,16 +108,13 @@ void Map::CalcBetaSkeleton(float gamma)
 					{	
 						hasATownInBetaSkeleton = true;
 					}
-
 			}
 			if (!hasATownInBetaSkeleton)
 			{
-
 				waysPoints.push_back(towns[a]);
 				waysPoints.push_back(towns[b]);
 				waysEdges.push_back(Vector2d(waysPoints.size() - 2, waysPoints.size() - 1));
 			}
-
 		}
 		++cmp;
 	}
@@ -132,7 +128,6 @@ void Map::CalcBetaSkeletonWithMoon(float gamma, const float STEP_X, const float 
 	int cmp = 0;
 	for (int a = 0; a < size; ++a)
 	{
-
 		for (int b = cmp; b < size; ++b)
 		{
 			if (a == b) continue;
@@ -152,7 +147,6 @@ void Map::CalcBetaSkeletonWithMoon(float gamma, const float STEP_X, const float 
 				waysPoints.push_back(towns[b]);
 				waysEdges.push_back(Vector2d(waysPoints.size() - 2, waysPoints.size() - 1));
 			}
-
 
 			for (float x = 0; x < WIDTH; x += STEP_X)
 			{
